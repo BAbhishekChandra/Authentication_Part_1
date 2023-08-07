@@ -39,6 +39,7 @@ app.get("/books/", async (request, response) => {
   response.send(booksArray);
 });
 
+// Register User API
 app.post("/users/", async (request, response) => {
   const { username, name, password, gender, location } = request.body;
   const hashedPassword = await bcrypt.hash(request.body.password, 10);
@@ -65,6 +66,7 @@ app.post("/users/", async (request, response) => {
   }
 });
 
+// Login User API
 app.post("/login", async (request, response) => {
   const { username, password } = request.body;
   const selectUserQuery = `SELECT * FROM user WHERE username = '${username}'`;
